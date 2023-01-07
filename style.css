@@ -1,0 +1,227 @@
+/**
+* Template Name: OWDD
+* Author: Joshua Almasin
+*/
+
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;0,1000;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900;1,1000&family=Quicksand:wght@300;400;500;600;700&display=swap');
+
+body {
+  background-color: #0E0E0E !important;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #E2E2E2 !important;
+}
+
+p {
+  color: #E3E3E3 !important;
+}
+
+
+.btn-primary {
+  background-color: #E2E2E2 !important;
+  color: #0E0E0E !important;
+  border: 0px;
+  background: #E2E2E2;
+  box-shadow: 0px 4px 8px rgba(55, 125, 255, 0.5);
+  border-radius: 24px;
+  padding: 12px 50px;
+  font-family: 'Quicksand';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 24px;
+  /* identical to box height, or 150% */
+  
+  letter-spacing: 0.01em;
+  
+  color: #0D0D0D;
+}
+.theme-dark {
+  background-color: #0E0E0E;
+}
+.btn-primary:hover {
+  background-color: #fff !important;
+  color: #0E0E0E !important;
+}
+
+
+.hero {
+    padding-top: 68px;
+
+}
+    
+h1.hero-header {
+    font-family: 'Nunito';
+    font-style: normal;
+    font-weight: 800;
+    font-size: 64px;
+    line-height: 87px;
+    text-align: center;
+    letter-spacing: 0.01em;
+    color: #E2E2E2;
+}
+p.hero-text {
+    font-family: 'Nunito';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 150%;
+    /* or 30px */
+
+    text-align: center;
+    letter-spacing: 0.01em;
+    padding-bottom:32px;
+    color: #E3E3E3;
+
+}
+
+p.about-text {
+    font-family: 'Quicksand';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 32px;
+    /* or 160% */
+
+    letter-spacing: 0.01em;
+}
+
+p.portfolio-text {
+    font-family: 'Quicksand';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 34px;
+    /* or 170% */
+
+    text-align: center;
+    letter-spacing: 0.01em;
+
+}
+
+/** Slider CSS Below **/
+.slide {
+    position: relative;
+    cursor: pointer;
+    height: 80vh;
+    flex: 1;
+    margin: 10px;
+    border-radius: 20px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    transition: .5s
+  }
+  
+  .slide > img {
+    width: 100%;
+    height: 100%;
+  }
+  
+  .slide > h3 {
+    position: absolute;
+    color: #fff;
+    bottom: 10px;
+    left: 10px;
+    opacity: 0;
+    transition: .5s
+    
+  }
+  
+  .slide.active {
+    flex: 10;
+  }
+  
+  .slide.active > h3{
+    opacity: 1
+  }
+  
+
+
+.circle-1 {
+  position: absolute;
+  width: 31px;
+  height: 31px;
+  left: 94px;
+  top: 243px;
+
+  background: linear-gradient(180deg, rgba(68, 133, 255, 0.8) 0%, #377DFF 100%);
+  box-shadow: 0px 3px 20px rgba(0, 0, 0, 0.05);
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.circle-2 {
+  position: absolute;
+width: 31px;
+height: 31px;
+left: 1424px;
+top: 97px;
+
+background: linear-gradient(180deg, #FF8E8E 0%, #F62424 100%);
+box-shadow: 0px 3px 20px rgba(0, 0, 0, 0.05);
+border-radius: 50%;
+overflow: hidden;
+}
+
+
+/** Animated **/
+.tracking-in-expand {
+	-webkit-animation: tracking-in-expand 1.5s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
+	        animation: tracking-in-expand 1.5s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
+}
+
+ @-webkit-keyframes tracking-in-expand {
+  0% {
+    letter-spacing: -0.5em;
+    opacity: 0;
+  }
+  40% {
+    opacity: 0.6;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes tracking-in-expand {
+  0% {
+    letter-spacing: -0.5em;
+    opacity: 0;
+  }
+  40% {
+    opacity: 0.6;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+
+
+@media(max-width:991px) {
+  .about-heading {
+    margin-bottom: 115px !important;
+  }
+  .portfolio-heading {
+    margin-top:50px;
+  }
+}
+
+@media(max-width:766px) {
+  .about-heading {
+    margin-bottom: 0px !important;
+  }
+  .portfolio-heading {
+    margin-top:0px;
+  }
+  .circle-1, .circle-2 {
+    display: none;
+  }
+}
+
+@media(max-width:409px) {
+  .portfolio-heading {
+    margin-top: 50px !important;
+  }
+}
