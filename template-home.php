@@ -23,7 +23,7 @@ get_header(); ?>
          </div>
          <div class="row mt-5">
              <div class="col-md-10 mx-auto text-center">
-                 <img class="img-fluid " src="./imgs/hero-slide-img.png" alt="">
+                 <img class="img-fluid " src="<?php echo get_theme_mod( 'hero-image', get_template_directory_uri() . '/imgs/hero-slide-img.png'); ?>" alt="">
              </div>
          </div>
      </div>
@@ -33,23 +33,20 @@ get_header(); ?>
      <div class="container">
          <div class="row">
              <div class="col-md-6 mx-auto text-center">
-                 <h2 class="mb-5 about-heading">Lorem ipsum dolor sit amet.</h2>
+                 <h2 class="mb-5 about-heading"><?php echo get_theme_mod( 'about-heading' , 'Lorem ipsum dolor sit amet.');  ?></h2>
              </div>
          </div>
          <div class="row">
              <div class="col-md-6 mx-auto">
                  <img id="design-1" src="./imgs/design-1.png" alt="">
-                 <img class="img-fluid" src="./imgs/team.png" alt="">
+                 <img class="img-fluid" src="<?php echo get_theme_mod( 'about-image', get_template_directory_uri() . '/imgs/team.png'); ?>" alt="">
                  <img src="./imgs/design-2.png" alt="" id="design-2">
              </div>
              <div class="col-md-6 mx-auto  d-flex align-items-center" style="height:350px">
                  <div>
-                     <p class="about-text">We move with make a Creative Strategy for help your business goal, we
-                         help to improve your income by a services we have. make your content look interesting
-                         and make people look for your business</p>
-                     <p class="about-text">We move with make a Creative Strategy for help your business goal, we
-                         help to improve your income by a services we have. make your content look interesting
-                         and make people look for your business</p>
+                     <p class="about-text"><?php echo get_theme_mod( 'about-p', 'We move with make a Creative Strategy for help your business goal, we help to improve your income by a services we have. make your content look interesting and make people look for your business
+
+We move with make a Creative Strategy for help your business goal, we help to improve your income by a services we have. make your content look interesting and make people look for your business'); ?></p>
                      <a href="" class="btn btn-primary">Click Here</a>
                  </div>
              </div>
@@ -61,36 +58,28 @@ get_header(); ?>
      <div class="container">
          <div class="row">
              <div class="col-md-10 mx-auto text-center">
-                 <h1 class="portfolio-heading">Our Work</h1>
-                 <p class="portfolio-text">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dolores
-                     aliquam blanditiis nulla repudiandae pariatur? Assumenda maiores eum fugit dolorem amet.</p>
+                 <h1 class="portfolio-heading"><?php echo get_theme_mod( 'work-heading', 'Our Work'); ?></h1>
+                 <p class="portfolio-text"><?php echo get_theme_mod('work-p', 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dolores
+                     aliquam blanditiis nulla repudiandae pariatur? Assumenda maiores eum fugit dolorem amet.'); ?></p>
              </div>
          </div>
          <div class="row">
-             <div class="slide"
-                 style="background-image: url('https://images.unsplash.com/photo-1657617832971-6e966739cd10?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1074&q=80');">
-                 <h3>Shanti Stupa</h3>
-             </div>
-             <div class="slide" style="
-             background-image: url('https://images.unsplash.com/photo-1658742407793-9339d0668325?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80');
-           ">
-                 <h3>Kuala Lumpur</h3>
-             </div>
-             <div class="slide" style="
-             background-image: url('https://images.unsplash.com/photo-1658070846367-69ee59dd4c89?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1632&q=80');
-           ">
-                 <h3>Truro</h3>
-             </div>
-             <div class="slide" style="
-             background-image: url('https://images.unsplash.com/photo-1626939078937-de13378ff442?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1471&q=80');
-           ">
-                 <h3>Windsor Castle</h3>
-             </div>
-             <div class="slide active" style="
-             background-image: url('https://images.unsplash.com/photo-1613939887052-a9b6bcaaea89?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80');
-           ">
-                 <h3>Zhong Shan Da Xue</h3>
-             </div>
+            <?php 
+                $args = array(
+                    'post_type' => 'owd_project',
+                    'posts_per_page' => 5,
+                );
+
+                $projects = new WP_Query($args);
+                while ( $projects->have_posts() ):
+                    $projects->the_post();
+                ?>
+                <div class="slide active"
+                    style="background-image: url('<?php the_post_thumbnail_url( ) ?>');">
+                    <h3><?php the_title(); ?></h3>
+                </div>
+            <?php endwhile; ?>
+
          </div>
      </div>
  </section>
@@ -104,11 +93,13 @@ get_header(); ?>
                          <h2>Got a Project for Us?</h2>
                          <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. A, consectetur!</p>
                          <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Consequuntur tenetur qui in obcaecati modi, quod velit explicabo vero eos vitae, ipsa, dolore perspiciatis voluptate aliquam voluptates ipsam! Esse, explicabo amet.</p>
-                         <a href="" class="btn btn-primary">Get Started</a>
                      </div>
                  </div>
              </div>
              <div class="col-md-12 col-lg-6 col-xl-6 ps-5 mx-auto">
+                <?php if ( is_active_sidebar( 'owd-contact-form' )): ?>
+                    <?php dynamic_sidebar( 'owd-contact-form' ); ?>
+                <?php endif; ?>
              </div>
          </div>
      </div>

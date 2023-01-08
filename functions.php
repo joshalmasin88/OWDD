@@ -40,6 +40,12 @@ function owd_sidebars() {
         'before_widget' => '<div class="col-md-4 text-center">',
         'after_widget' => '</div>'
     ) );
+
+    register_sidebar( array(
+        'name' => 'OWD Contact Form',
+        'id' => 'owd-contact-form',
+        'description' => 'Contact Form'
+    ) );
 }
 
 add_action('widgets_init', 'owd_sidebars');
@@ -48,10 +54,32 @@ function owd_config() {
     register_nav_menu('main-menu', 'Main menu');
 
     add_theme_support( 'custom-logo', array(
-        'height' => 85,
-        'width' => 85,
+        'height' => 185,
+        'width' => 185,
     ));
+
+    add_theme_support('post-thumbnails');
+    add_post_type_support( 'owd_project', 'thumbnail' );    
+
 
 }
 
 add_action('after_setup_theme', 'owd_config');
+
+
+function owd_custom_post_type() {
+    register_post_type( 'owd_project', array(
+        'labels' => array(
+            'name' => 'Projects',
+            'singular_name' => 'Project'
+        ),
+        'public' => true,
+        'has_archive' => true,
+        'supports' => array(
+            'title',
+            'thumbnail'
+        )
+    ) );
+}
+
+add_action( 'init', 'owd_custom_post_type' );
